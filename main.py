@@ -8,14 +8,14 @@ FROM insuranse INNER JOIN humans ON insuranse.hum_id = humans.hum_id
 '''
 query_2 = '''
 CREATE VIEW SmokeStat AS
-SELECT hum_smoker,COUNT(*)
-FROM humans
-GROUP BY hum_smoker
+SELECT isSmoker,COUNT(*)
+FROM smokers 
+GROUP BY isSmoker
 '''
 
 query_3 = '''
 CREATE VIEW HumansAge AS
-SELECT ins_charge,hum_age 
+SELECT ins_charge,hum_age
 FROM insuranse INNER JOIN humans ON insuranse.hum_id = humans.hum_id
 '''
 
@@ -43,7 +43,7 @@ def connect():
             data_to_visualise = {}
 
             for row in cur:
-                data_to_visualise[row[0]] = row[1]
+                data_to_visualise[row[1]] = row[0]
 
             x_range = range(len(data_to_visualise.keys()))
         
@@ -81,7 +81,7 @@ def connect():
             data_to_visualise = {}
 
             for row in cur:
-                data_to_visualise[row[0]] = row[1]
+                data_to_visualise[row[1]] = row[0]
 
             x_range = range(len(data_to_visualise.keys()))
         
