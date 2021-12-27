@@ -9,6 +9,7 @@ CREATE TABLE humans_newTable
 (
   hum_age INTEGER NOT NULL,
   hum_sex VARCHAR(40) NOT NULL
+  CONSTRAINT pk_humans_newTable PRIMARY KEY (hum_age)
 )
 '''
 
