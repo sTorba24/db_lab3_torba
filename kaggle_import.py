@@ -5,20 +5,19 @@ import psycopg2
 INPUT_CSV_FILE = 'insurance.csv'
 
 query_0 = '''
-CREATE TABLE humans_new
+CREATE TABLE humans_newTable
 (
   hum_age INTEGER NOT NULL,
-  hum_smoker VARCHAR(40) NOT NULL,
   hum_sex VARCHAR(40) NOT NULL
 )
 '''
 
 query_1 = '''
-DELETE FROM humans_new
+DELETE FROM humans_newTable
 '''
 
 query_2 = '''
-INSERT INTO humans_new (hum_age, hum_smoker, hum_sex) VALUES (%s, %s, %s)
+INSERT INTO humans_newTable (hum_age, hum_sex) VALUES (%s, %s)
 '''
 
 conn = psycopg2.connect(
@@ -37,7 +36,7 @@ with conn:
         reader = csv.DictReader(inf)
 
         for idx, row in enumerate(reader):
-            values = (row['age'], row['smoker'], row['sex'])
+            values = (row['age'], row['sex'])
             cur.execute(query_2, values)
 
     conn.commit()
