@@ -4,6 +4,7 @@ import psycopg2
 OUTPUT_FILE_T = 'torba_DB_{}.csv'
 
 TABLES = [
+    'smokers',
     'humans',
     'children',
     'insuranse'
